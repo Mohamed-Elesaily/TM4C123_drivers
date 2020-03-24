@@ -36,22 +36,22 @@ void port_direction(uint32_t port, uint32_t num){
     }
 }
 
-void pin_direction(uint32_t port, uint32_t pin){
+void pin_direction(uint32_t port, uint32_t pin, uint32_t num){
        switch(port){
         case 0:
-            GPIO_PORTA_DIR_R |= SETPIN(pin);
+            GPIO_PORTA_DIR_R |= SET(num,pin);
             break;
         case 1:
-            GPIO_PORTB_DIR_R |= SETPIN(pin);
+            GPIO_PORTB_DIR_R |= SET(num,pin);
             break;
         case 2:
-            GPIO_PORTC_DIR_R |= SETPIN(pin);
+            GPIO_PORTC_DIR_R |= SET(num,pin);
             break;
         case 3:
-            GPIO_PORTD_DIR_R  |= SETPIN(pin);
+            GPIO_PORTD_DIR_R  |= SET(num,pin);
             break;
         case 4:
-           GPIO_PORTE_DIR_R |= SETPIN(pin);
+           GPIO_PORTE_DIR_R |= SET(num,pin);
             break;
         case 5:
             GPIO_PORTF_DIR_R  |= SETPIN(pin);

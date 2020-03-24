@@ -11,6 +11,7 @@
 
 #define SETPIN(PIN) (1<<PIN)
 #define CLPIN(PIN) (0<<PIN)
+#define SET(NUM,PIN) (NUM<<PIN)
 #define READPIN(DATA,PIN)(1 & (DATA>>PIN))
 // PORTS
 #define PORTA 0
@@ -29,9 +30,13 @@
 #define PIN5 5
 #define PIN6 6
 #define PIN7 7
+
+#define IN 0
+#define OUT 1
 void port_init(uint32_t port);
 void port_direction(uint32_t port, uint32_t num);
-void pin_direction(uint32_t port, uint32_t pin);
+void pin_direction(uint32_t port, uint32_t pin, uint32_t num);
+
 void digitalEnable(uint32_t port, uint32_t num);
 void digitalEnablePin(uint32_t port, uint32_t pin);
 
