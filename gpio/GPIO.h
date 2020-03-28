@@ -2,16 +2,17 @@
  * GPIO.h
  *
  *  Created on: Mar 22, 2020
- *      Author: msm
+ *      Author: Mohamed Elesaily
  */
 #include"std.h"
+
+#include"../tm4c123gh6pm.h"
 #ifndef GPIO_GPIO_H_
 #define GPIO_GPIO_H_
 // MACROS //
 
-#define SETPIN(PIN) (1<<PIN)
-#define CLPIN(PIN) (0<<PIN)
-#define SET(NUM,PIN) (NUM<<PIN)
+#define SETPIN(DATA, PIN) (DATA |= (1<<PIN))
+#define CLPIN(DATA,PIN) (DATA &= (~(1<<PIN)))
 #define READPIN(DATA,PIN)(1 & (DATA>>PIN))
 // PORTS
 #define PORTA 0
@@ -35,12 +36,12 @@
 #define OUT 1
 void port_init(uint32_t port);
 void port_direction(uint32_t port, uint32_t num);
-void pin_direction(uint32_t port, uint32_t pin, uint32_t num);
+void pin_direction(uint32_t port, uint32_t pin, uint32_t io);
 
 void digitalEnable(uint32_t port, uint32_t num);
 void digitalEnablePin(uint32_t port, uint32_t pin);
 
 void digitalWrite(uint32_t port, uint32_t num);
-void digitalWritePin(uint32_t port, uint32_t pin);
-int32_t digitalRead(uint32_t port, uint32_t pin);
+void digitalWritePin(uint32_t port, uint32_t pin, uint32_t num);
+uint32_t digitalRead(uint32_t port, uint32_t pin);
 #endif /* GPIO_GPIO_H_ */
